@@ -190,6 +190,11 @@
 }
 
 @media screen and (max-width: 491px) {
+
+    .subscribe-form {
+        padding: 0;
+    }
+
     .exs-full-width {
         width: 100%;
     }
