@@ -230,12 +230,26 @@ jQuery(window).on("load", function() {
       return pattern.test(emailAddress);
     }
 
-    if (isValidEmail(email) && message.length > 1 && name.length > 1) {
+    if (isValidEmail(email)) {
+      var url =
+        "https://docs.google.com/forms/d/e/1FAIpQLSevgq0tY-gTYzf7VDXaUimDMOuxx3BO1wS0LD_0eh2x_HJOLQ/formResponse";
+
+      var data = {
+        "entry.328910679": email
+      };
+
       $.ajax({
-        type: "POST",
-        url: "php/sendmail.php",
-        data: dataString,
+        url: url,
+        method: "POST",
+        datatype: "application/json",
+        crossDomain: true,
+        data: data,
         success: function() {
+          $("#contact-form .success").fadeIn(1000);
+          $("#contact-form .error").fadeOut(500);
+          $("#contact-form")[0].reset();
+        },
+        error: function() {
           $("#contact-form .success").fadeIn(1000);
           $("#contact-form .error").fadeOut(500);
           $("#contact-form")[0].reset();

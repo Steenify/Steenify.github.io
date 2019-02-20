@@ -383,6 +383,7 @@ textarea.form-control {
 #contact-form .success,
 #contact-form .error {
 	display: none;
+	margin-top: 10px;
 }
 
 #contact-form .success {
